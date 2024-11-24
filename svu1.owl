@@ -1,0 +1,209 @@
+@prefix : <http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/lenovo/ontologies/2024/10/svu> .
+
+<http://www.semanticweb.org/lenovo/ontologies/2024/10/svu> rdf:type owl:Ontology ;
+                                                            rdfs:comment "this is an ontology about syrian virtual university" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#belongTo
+:belongTo rdf:type owl:ObjectProperty ;
+          rdfs:domain :course ;
+          rdfs:range :program .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#manages
+:manages rdf:type owl:ObjectProperty ;
+         rdfs:domain :teacher ;
+         rdfs:range :program .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#teaches
+:teaches rdf:type owl:ObjectProperty ;
+         rdfs:domain :teacher ;
+         rdfs:range :course .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#academicRank
+:academicRank rdf:type owl:DatatypeProperty ;
+              rdfs:domain :teacher ;
+              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#email
+:email rdf:type owl:DatatypeProperty ;
+       rdfs:domain :teacher ;
+       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#maximum_years
+:maximum_years rdf:type owl:DatatypeProperty ;
+               rdfs:domain :program ;
+               rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#minimum_years
+:minimum_years rdf:type owl:DatatypeProperty ;
+               rdfs:domain :program ;
+               rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#priceInEuro
+:priceInEuro rdf:type owl:DatatypeProperty ;
+             rdfs:domain :course ;
+             rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#priceInLira
+:priceInLira rdf:type owl:DatatypeProperty ;
+             rdfs:domain :course ;
+             rdfs:range xsd:float .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#course
+:course rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#program
+:program rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#student
+:student rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#teacher
+:teacher rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#university
+:university rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#advanced_web_management
+:advanced_web_management rdf:type owl:NamedIndividual ,
+                                  :course ;
+                         :belongTo :s_program ;
+                         :priceInLira "80000"^^xsd:int .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#ahmed_issa
+:ahmed_issa rdf:type owl:NamedIndividual ,
+                     :student .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#compilers
+:compilers rdf:type owl:NamedIndividual ,
+                    :course .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#dr.ahmed
+:dr.ahmed rdf:type owl:NamedIndividual ,
+                   :teacher .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#dr.bassel_alkhateeb
+:dr.bassel_alkhateeb rdf:type owl:NamedIndividual ,
+                              :teacher ;
+                     :manages :s_program ;
+                     :teaches :semantic_web ;
+                     :academicRank "Doctor"^^xsd:string ;
+                     :email "basselk@scs-net.org , t_balkhatib@svuonline.org"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#dr.mohammad_aljneidy
+:dr.mohammad_aljneidy rdf:type owl:NamedIndividual ,
+                               :teacher ;
+                      :manages :information_technology ;
+                      :academicRank "Doctor"^^xsd:string ;
+                      :email "ise_pd@svuonline.org"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#dr.mohammad_mohammad
+:dr.mohammad_mohammad rdf:type owl:NamedIndividual ,
+                               :teacher ;
+                      :teaches :software_engineering ;
+                      :academicRank "Doctor"^^xsd:string ;
+                      :email "t_mamohamed@svuonline.org"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#faraj_mohammad
+:faraj_mohammad rdf:type owl:NamedIndividual ,
+                         :student .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#information_technology
+:information_technology rdf:type owl:NamedIndividual ,
+                                 :program ;
+                        :maximum_years "10.0"^^xsd:float ;
+                        :minimum_years "5.0"^^xsd:float .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#laila_mansour
+:laila_mansour rdf:type owl:NamedIndividual ,
+                        :student .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#lina_marwan
+:lina_marwan rdf:type owl:NamedIndividual ,
+                      :student .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#s_program
+:s_program rdf:type owl:NamedIndividual ,
+                    :program ;
+           :maximum_years "4.0"^^xsd:float ;
+           :minimum_years "2.0"^^xsd:float .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#sarah_mahmood
+:sarah_mahmood rdf:type owl:NamedIndividual ,
+                        :student .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#semantic_web
+:semantic_web rdf:type owl:NamedIndividual ,
+                       :course ;
+              :belongTo :information_technology ;
+              :priceInLira "50000"^^xsd:int .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#software_engineering
+:software_engineering rdf:type owl:NamedIndividual ,
+                               :course ;
+                      :belongTo :information_technology ;
+                      :priceInLira "50000"^^xsd:int .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#syrian_virtual
+:syrian_virtual rdf:type owl:NamedIndividual ,
+                         :university .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2024/10/svu#web_development_practices
+:web_development_practices rdf:type owl:NamedIndividual ,
+                                    :course ;
+                           :belongTo :s_program ;
+                           :priceInLira "80000"^^xsd:int .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
